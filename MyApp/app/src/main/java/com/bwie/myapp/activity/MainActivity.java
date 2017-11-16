@@ -1,24 +1,34 @@
 package com.bwie.myapp.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.bwie.myapp.R;
+import com.bwie.myapp.base.BaseActivity;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 public class MainActivity extends BaseActivity {
+
+    private SimpleDraweeView icon1;
+    private TextView title;
+    private ImageView icon2;
+    private FrameLayout frame;
+    private RadioGroup rg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        View decorView = getWindow().getDecorView();
-        // Hide both the navigation bar and the status bar.
-        // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-        // a general rule, you should design your app to hide the status bar whenever you
-        // hide the navigation bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
+        //初始化组件
+        icon1 = findViewById(R.id.icon1);
+        title = findViewById(R.id.title);
+        icon2 = findViewById(R.id.icon2);
+        frame = findViewById(R.id.frame);
+        rg = findViewById(R.id.rg);
     }
 }

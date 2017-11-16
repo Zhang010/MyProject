@@ -1,7 +1,6 @@
 package com.bwie.myapp.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bwie.myapp.R;
-import com.bwie.myapp.mvp.presentet.RegisterPresenter;
-import com.bwie.myapp.mvp.presentet.RegisterPresenterImpl;
-import com.bwie.myapp.mvp.view.RegisterView;
+import com.bwie.myapp.base.BaseActivity;
+import com.bwie.myapp.mvp.presentet.register.RegisterPresenter;
+import com.bwie.myapp.mvp.presentet.register.RegisterPresenterImpl;
+import com.bwie.myapp.mvp.view.register.RegisterView;
 
 public class RegisterActivity extends BaseActivity implements RegisterView, View.OnClickListener {
 
@@ -42,6 +42,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
         bt_register.setOnClickListener(this);
         exisingUser.setOnClickListener(this);
         register_tourist_login.setOnClickListener(this);
+        register_back.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +58,9 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
                 intent = new Intent(RegisterActivity.this,MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                break;
+            case R.id.register_back:
+                this.finish();
                 break;
             case R.id.bt_register:
                 registerPresenter.registerPresenter(this,register_phone.getText().toString(),register_pwd.getText().toString());
@@ -75,10 +79,10 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
 
     @Override
     public void OnSuccess() {
+        Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
     }
 
     @Override
