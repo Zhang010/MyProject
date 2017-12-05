@@ -1,6 +1,7 @@
 package com.bwie.myapp.activity;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private Button wx_login;
     private Button qq_login;
     private Button other_login;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
